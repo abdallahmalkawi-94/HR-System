@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/general_baackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vacation_departure_request"
+            android:gravity="center"
+            android:layout_margin="30dp"
+            android:textSize="25sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/V_D_Name_Txt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:hint="@string/name"
+            android:layout_margin="20dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:background="@drawable/edit_text_style"/>
+
+        <TextView
+            android:id="@+id/V_D_Phone_Txt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:hint="@string/phone"
+            android:layout_margin="20dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:background="@drawable/edit_text_style"/>
+
+        <TextView
+            android:id="@+id/V_D_Designation_Txt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:hint="@string/designation"
+            android:layout_margin="20dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:background="@drawable/edit_text_style"/>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="40dp"
+           android:orientation="horizontal"
+           android:layout_margin="20dp">
+
+           <TextView
+               android:layout_width="175dp"
+               android:layout_height="match_parent"
+               android:gravity="center_vertical"
+               android:text="@string/request_type"
+               android:textSize="20sp"
+               android:fontFamily="@font/adamina"
+               android:textColor="@color/colorPrimaryDark"
+               android:textStyle="bold"/>
+
+           <Spinner
+               android:id="@+id/Request_Type_Spin"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:paddingStart="10dp"
+               android:layout_marginStart="10dp"
+               android:background="@drawable/edit_text_style"/>
+
+       </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:layout_width="175dp"
+                android:layout_height="match_parent"
+                android:text="@string/vacation_date"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:fontFamily="@font/adamina"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/V_Date_Txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/choose_date"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp"
+                android:paddingStart="10dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/adamina"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:enabled="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:layout_width="175dp"
+                android:layout_height="match_parent"
+                android:text="@string/departure_date"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:fontFamily="@font/adamina"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/D_Date_Txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/choose_date"
+                android:layout_marginStart="10dp"
+                android:paddingStart="10dp"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/adamina"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:enabled="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:layout_width="175dp"
+                android:layout_height="match_parent"
+                android:text="@string/departure_time"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:fontFamily="@font/adamina"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/D_Time_From_Txt"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp"
+                android:layout_marginStart="10dp"
+                android:hint="@string/choose_time_from"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/adamina"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:enabled="false" />
+
+            <TextView
+                android:id="@+id/D_Time_To_Txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp"
+                android:layout_marginStart="10dp"
+                android:hint="@string/choose_time_to"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/adamina"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:enabled="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/V_D_Submit_Btn"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@color/buttonBox"
+                android:text="@string/submit"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/textdark"
+                android:fontFamily="@font/adamina"/>
+            <Button
+                android:id="@+id/V_D_Cancel_Btn"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@color/buttonBox"
+                android:layout_marginStart="20dp"
+                android:text="@string/cancel"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/textdark"
+                android:fontFamily="@font/adamina"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

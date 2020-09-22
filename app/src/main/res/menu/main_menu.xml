@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/Home_Item"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/Settings_Item"
+        android:title="@string/settings" />
+
+    <item
+        android:id="@+id/Help_Item"
+        android:title="@string/help"/>
+
+    <item
+        android:id="@+id/Logout_Item"
+        android:title="@string/logout"/>
+
+
+</menu>

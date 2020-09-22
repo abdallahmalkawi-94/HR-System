@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "367045158434",
+    "firebase_url": "https://employee-management-syst-839fa.firebaseio.com",
+    "project_id": "employee-management-syst-839fa",
+    "storage_bucket": "employee-management-syst-839fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367045158434:android:8a263e403d1d44bdd50c7b",
+        "android_client_info": {
+          "package_name": "com.demo.employeemanagementsystemdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367045158434-ll6cel3el9t1sk2rfpbd8ocg6lp96p28.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.demo.employeemanagementsystemdemo",
+            "certificate_hash": "096ca0541361d00ee6df5bb6a13c253207837130"
+          }
+        },
+        {
+          "client_id": "367045158434-habebltmaiv91jimgrthve6qv33tpsen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKYTaJbd6U4AAkQvyZ_FOMEA-u6QcyCsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367045158434-habebltmaiv91jimgrthve6qv33tpsen.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

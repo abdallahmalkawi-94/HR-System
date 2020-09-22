@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:background="@drawable/splash_screen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            android:layout_margin="30dp"
+            android:textSize="35sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textSize="25sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/Signup_Name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="@string/enter_your_name"
+            android:layout_marginTop="10dp"
+            android:paddingStart="10dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/textdark"
+            android:inputType="textPersonName"
+            android:background="@drawable/edit_text_style"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/Signup_Email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="@string/enter_your_email_address"
+            android:layout_marginTop="10dp"
+            android:paddingStart="10dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/textdark"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/edit_text_style"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:passwordToggleEnabled="true"
+            app:hintEnabled="false">
+            <EditText
+                android:id="@+id/Signup_Password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="@string/enter_password"
+                android:paddingStart="10dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/adamina"
+                android:textColor="@color/textdark"
+                android:inputType="textPassword"
+                android:background="@drawable/edit_text_style"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_password"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:passwordToggleEnabled="true"
+            app:hintEnabled="false">
+            <EditText
+                android:id="@+id/Signup_Confirm_Password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="@string/confirm_password"
+                android:paddingStart="10dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/adamina"
+                android:textColor="@color/textdark"
+                android:inputType="textPassword"
+                android:background="@drawable/edit_text_style"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/joining_date"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/Signup_Joining_Date"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="@string/joining_date"
+            android:layout_marginTop="10dp"
+            android:paddingStart="10dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/textdark"
+            android:inputType="datetime"
+            android:background="@drawable/edit_text_style"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/designation"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+        <Spinner
+            android:id="@+id/Signup_Designation_Spin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:paddingStart="10dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/textdark"
+            android:background="@drawable/edit_text_style"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp">
+
+            <Button
+                android:id="@+id/Signup_Btn"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@color/buttonBox"
+                android:text="@string/sign_up"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/textdark"
+                android:fontFamily="@font/adamina"/>
+            <Button
+                android:id="@+id/Signup_Cancel_Btn"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@color/buttonBox"
+                android:layout_marginStart="20dp"
+                android:text="@string/cancel"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/textdark"
+                android:fontFamily="@font/adamina"/>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:visibility="gone"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

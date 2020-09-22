@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">Employee Management System</string>
+
+    <!-- General Strings -->
+    <string name="required">Required</string>
+    <string name="error">"Error:- "</string>
+    <string name="please_enter_required_fields">Please Enter Required Fields</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+
+    <!-- Login Activity Strings -->
+    <string name="password">Password</string>
+    <string name="not_a_member_sign_up">Not a member? Sign up</string>
+    <string name="login">Login</string>
+    <string name="sign_in_with_yahoo">Sign in with Yahoo</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="loged_in_successful">Loged in Successful</string>
+    <string name="forget_password">Forget Password ?</string>
+    <string name="rest_password_dialog_title">Rest Password</string>
+    <string name="enter_your_email_to_receive_reset_link_dialog_message">Enter Your Email To Receive Reset Link</string>
+    <string name="reset_link_send_to_your_email">Reset Link Send To Your Email</string>
+
+    <!-- Sign Up Activity Strings -->
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="enter_your_email_address">Enter Your Email Address</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="designation">Designation</string>
+    <string name="password_not_matched">Password Not Matched</string>
+    <string name="successfully_registered">Successful Registered</string>
+    <string name="joining_date">Joining Date</string>
+    <string-array name="position_array">
+        <item>Engineer</item>
+        <item>Technical</item>
+    </string-array>
+
+    <!-- Main Menu Strings -->
+    <string name="settings">Settings</string>
+    <string name="help">Help</string>
+    <string name="logout">Logout</string>
+
+    <!-- User Main Strings -->
+    <string name="vacations_leaves_details">Vacations &amp; Leaves Details</string>
+    <string name="vacation_departure_request">Vacation &amp; Departure Request</string>
+    <string name="salary_slip">Salary Slip</string>
+
+    <!-- Settings Strings -->
+    <string name="change_password">Change Password</string>
+    <string name="change_language">Change Language</string>
+    <string name="edit_phone">Edit Phone</string>
+    <string name="phone">Phone</string>
+    <string name="new_password">New Password</string>
+    <string name="password_changed_successfully">Password Changed Successfully</string>
+    <string name="successfully_edit_phone">Phone Changed Successfully</string>
+
+    <!-- Vacation & Departure Request Strings -->
+    <string name="request_type">Request Type</string>
+    <string name="vacation_date">Vacation Date:-</string>
+    <string name="choose_date">Choose Date</string>
+    <string name="departure_time">Departure Time:-</string>
+    <string name="choose_time_from">From</string>
+    <string name="choose_time_to">To</string>
+    <string name="departure_date">Departure Date:-</string>
+    <string name="submit">Submit</string>
+    <string name="under_review">Your Request Under Review</string>
+    <string-array name="request_type_string">
+        <item>Choose Type</item>
+        <item>Vacation</item>
+        <item>Departure</item>
+    </string-array>
+
+</resources>
