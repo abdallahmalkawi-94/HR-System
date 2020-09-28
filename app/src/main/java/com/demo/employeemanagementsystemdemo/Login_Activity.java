@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.demo.employeemanagementsystemdemo.user.User_Main_Activity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -36,6 +37,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class Login_Activity extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout login_by_google , login_by_microsoft;
@@ -50,6 +54,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     private DocumentReference reference;
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 1;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +65,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
 
     private void defineItems() {
         firebaseAuth = FirebaseAuth.getInstance();
-        sharedPreferences = getSharedPreferences("UserID" , MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("User Date" , MODE_PRIVATE);
         editor = sharedPreferences.edit();
         firestore = FirebaseFirestore.getInstance();
         LoginByGoogle();
@@ -92,6 +97,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId())
         {
             case R.id.Login_By_Google:
+                LoginByGoogle();
                 signInByGoogle();
                 break;
             case R.id.Login_By_Yahoo:
@@ -145,44 +151,56 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         super.onActivityResult(requestCode, resultCode, data);
     } // end onActivityResult()
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
-        final AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount account) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        firebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    final FirebaseUser user = firebaseAuth.getCurrentUser();
-                    Toast.makeText(getApplicationContext() , R.string.loged_in_successful , Toast.LENGTH_SHORT).show();
+                if (task.isSuccessful())
+                {
+                    user = firebaseAuth.getCurrentUser();
                     reference = firestore.collection("Users").document(user.getUid());
-                    reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            editor.putString("userid" , user.getUid());
-                            editor.putString("Full Name" , documentSnapshot.getString("full_Name") );
-                            editor.putString("Email" , documentSnapshot.getString("email"));
-                            editor.putString("Joining Date" , documentSnapshot.getString("joining_Date") );
-                            editor.putString("Designation" , documentSnapshot.getString("designation") );
-                            editor.putString("Phone" , documentSnapshot.getString("phone"));
-                            editor.apply();
-                        } // end onSuccess()
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful())
+                            {
+                                final DocumentSnapshot documentSnapshot = task.getResult();
+                                if (documentSnapshot.exists())
+                                {
+                                    saveDataAndGotoUserPage(user , documentSnapshot);
+                                }else {
+                                    final Users users = new Users(account.getDisplayName()
+                                            , account.getEmail()
+                                            , "Not Selected Yet"
+                                            , "Not Selected Yet"
+                                            , "Not Selected Yet");
+                                    reference.set(users).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(getApplicationContext() , getString(R.string.loged_in_successful) , Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(Login_Activity.this , User_Main_Activity.class));
+                                            Animatoo.animateSplit(Login_Activity.this);
+                                            finish();
+                                        }
+                                    });
+                                } // end else()
+
+                            } // end if()
+                        } // end onComplete()
                     });
-                    startActivity(new Intent(Login_Activity.this , User_Main_Activity.class));
-                    finish();
-                }else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(getApplicationContext() , task.getException().getMessage() , Toast.LENGTH_LONG).show();
-                } // end else
-            } // end onComplete
+                } // end if()
+            } // end onComplete()
         }); // end addOnCompleteListener()
+
     } // end firebaseAuthWithGoogle()
 
     private void restPassword() {
          AlertDialog.Builder restpassworddialog = new AlertDialog.Builder(this);
          View viewDialog = LayoutInflater.from(this).inflate(R.layout.rest_password_dialog , null);
-        edit_rest_email = viewDialog.findViewById(R.id.Rest_Email);
-        restpassworddialog.setView(viewDialog).create();
-
-        restpassworddialog.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+         edit_rest_email = viewDialog.findViewById(R.id.Rest_Email);
+         restpassworddialog.setView(viewDialog).create();
+         restpassworddialog.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 email = edit_rest_email.getText().toString().trim();
@@ -224,22 +242,14 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful())
                         {
-                            Toast.makeText(getApplicationContext() , R.string.loged_in_successful , Toast.LENGTH_SHORT).show();
-                            reference = firestore.collection("Users").document(firebaseAuth.getCurrentUser().getUid());
+                            user = firebaseAuth.getCurrentUser();
+                            reference = firestore.collection("Users").document(user.getUid());
                             reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                      editor.putString("userid" , firebaseAuth.getCurrentUser().getUid());
-                                      editor.putString("Full Name" , documentSnapshot.getString("full_Name") );
-                                      editor.putString("Email" , documentSnapshot.getString("email"));
-                                      editor.putString("Joining Date" , documentSnapshot.getString("joining_Date") );
-                                      editor.putString("Designation" , documentSnapshot.getString("designation") );
-                                      editor.putString("Phone" , documentSnapshot.getString("phone"));
-                                      editor.apply();
+                                    saveDataAndGotoUserPage(user , documentSnapshot);
                                 } // end onSuccess()
                             });
-                            startActivity(new Intent(Login_Activity.this , User_Main_Activity.class));
-                            finish();
                         } // end if()
                         else
                             Toast.makeText(getApplicationContext() , getString(R.string.error) + " " + task.getException().getMessage() , Toast.LENGTH_LONG).show();
@@ -266,6 +276,21 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         else
         return true;
     } // end checkUserData()
+
+    private void saveDataAndGotoUserPage(FirebaseUser user , DocumentSnapshot documentSnapshot) {
+        editor.putString("userid" , user.getUid());
+        editor.putString("Full Name" , documentSnapshot.getString("full_Name") );
+        editor.putString("Email" , documentSnapshot.getString("email"));
+        editor.putString("Joining Date" , documentSnapshot.getString("joining_Date") );
+        editor.putString("Designation" , documentSnapshot.getString("designation") );
+        editor.putString("Phone" , documentSnapshot.getString("phone"));
+        editor.apply();
+
+        Toast.makeText(getApplicationContext() , getString(R.string.loged_in_successful) , Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(Login_Activity.this , User_Main_Activity.class));
+        Animatoo.animateSplit(this);
+        finish();
+    } // end saveData()
 
     @Override
     public void onBackPressed() {

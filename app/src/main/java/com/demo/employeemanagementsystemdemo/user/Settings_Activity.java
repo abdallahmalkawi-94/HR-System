@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.demo.employeemanagementsystemdemo.Login_Activity;
 import com.demo.employeemanagementsystemdemo.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -46,7 +47,7 @@ public class Settings_Activity extends AppCompatActivity implements View.OnClick
     private void defineItems() {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        sharedPreferences = getSharedPreferences("UserID" , MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("User Date" , MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         txt_name = findViewById(R.id.Settings_Name);
@@ -101,12 +102,12 @@ public class Settings_Activity extends AppCompatActivity implements View.OnClick
                 return true;
 
             case R.id.Logout_Item:
-                    firebaseAuth.signOut();
-                    editor.clear();
-                    editor.apply();
-                    startActivity(new Intent(Settings_Activity.this , Login_Activity.class));
-                    finish();
-                    return true;
+                firebaseAuth.signOut();
+                editor.clear();
+                editor.apply();
+                startActivity(new Intent(Settings_Activity.this , Login_Activity.class));
+                finish();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         } // end switch()
@@ -147,21 +148,21 @@ public class Settings_Activity extends AppCompatActivity implements View.OnClick
                 } // end if()
                 else
                 {
-                   firestore.collection("Users").document(user.getUid()).update("phone" , dialog_item.getText().toString())
-                           .addOnSuccessListener(new OnSuccessListener<Void>() {
-                       @Override
-                       public void onSuccess(Void aVoid) {
-                           Toast.makeText(getApplicationContext() , getString(R.string.successfully_edit_phone) , Toast.LENGTH_LONG).show();
-                           editor.putString("Phone" , dialog_item.getText().toString());
-                           editor.apply();
-                           txt_phone.setText(getString(R.string.phone) + ":- " + sharedPreferences.getString("Phone" , ""));
-                       } // end onSuccess()
-                   }).addOnFailureListener(new OnFailureListener() {
-                       @Override
-                       public void onFailure(@NonNull Exception e) {
-                           Toast.makeText(getApplicationContext() , e.getMessage() , Toast.LENGTH_LONG).show();
-                       } // end ()
-                   });
+                    firestore.collection("Users").document(user.getUid()).update("phone" , dialog_item.getText().toString())
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext() , getString(R.string.successfully_edit_phone) , Toast.LENGTH_LONG).show();
+                                    editor.putString("Phone" , dialog_item.getText().toString());
+                                    editor.apply();
+                                    txt_phone.setText(getString(R.string.phone) + ":- " + sharedPreferences.getString("Phone" , ""));
+                                } // end onSuccess()
+                            }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getApplicationContext() , e.getMessage() , Toast.LENGTH_LONG).show();
+                        } // end ()
+                    });
 
                 } // end else
             } // end onClick()
@@ -216,4 +217,12 @@ public class Settings_Activity extends AppCompatActivity implements View.OnClick
 
         edit_dialog.show();
     } // end changePassword()
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Settings_Activity.this , User_Main_Activity.class));
+        Animatoo.animateSwipeRight(this);
+        finish();
+    }
 } // end class

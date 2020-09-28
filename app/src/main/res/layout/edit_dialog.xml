@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_margin="50dp">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/Dialog_Title"
@@ -17,14 +16,13 @@
         android:textStyle="bold"
         android:gravity="center"/>
 
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
         app:hintEnabled="false"
         android:layout_margin="10dp">
+
         <EditText
             android:id="@+id/Dialog_Item"
             android:layout_width="match_parent"
@@ -35,6 +33,50 @@
             android:fontFamily="@font/adamina"
             android:textColor="@color/textdark"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/Edit_Dialog_Departure_Time"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="175dp"
+            android:layout_height="match_parent"
+            android:text="@string/departure_time"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/Edit_Dialog_Time_From_Txt"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:paddingStart="10dp"
+            android:hint="@string/choose_time_from"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Edit_Dialog_Time_To_Txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="10dp"
+            android:hint="@string/choose_time_to"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"

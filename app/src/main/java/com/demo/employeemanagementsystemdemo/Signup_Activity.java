@@ -1,6 +1,8 @@
 package com.demo.employeemanagementsystemdemo;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,6 +26,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Signup_Activity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = "TAG";
@@ -34,6 +40,9 @@ public class Signup_Activity extends AppCompatActivity implements View.OnClickLi
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firestore;
 
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +52,10 @@ public class Signup_Activity extends AppCompatActivity implements View.OnClickLi
     } // end onCreate()
 
     private void defineItems() {
+
+        sharedPreferences = getSharedPreferences("User Date" , MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
         edit_name = findViewById(R.id.Signup_Name);
         edit_email = findViewById(R.id.Signup_Email);
         edit_joining_date = findViewById(R.id.Signup_Joining_Date);
@@ -97,7 +110,7 @@ public class Signup_Activity extends AppCompatActivity implements View.OnClickLi
                             documentReference.set(users).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    firebaseAuth.signOut();
+                                    successfulSignUp();
                                 } // end onSuccess()
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -105,9 +118,7 @@ public class Signup_Activity extends AppCompatActivity implements View.OnClickLi
                                     Log.d(TAG, getString(R.string.error) + " "+e.getMessage());
                                 } // end onFailure()
                             });
-                            Toast.makeText(getApplicationContext() , R.string.successfully_registered , Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(Signup_Activity.this , Login_Activity.class));
-                            finish();
+
                         } // end if()
                         else
                         {
@@ -121,6 +132,22 @@ public class Signup_Activity extends AppCompatActivity implements View.OnClickLi
             Toast.makeText(getApplicationContext() , getString(R.string.error) + " " + e.getMessage() , Toast.LENGTH_LONG).show();
         } // end catch()
     } // end startRegister()
+
+    private void successfulSignUp() {
+        firebaseAuth.signOut();
+        AlertDialog.Builder successful_registered_builder = new AlertDialog.Builder(this);
+        successful_registered_builder.setMessage(getString(R.string.successfully_registered_part1) + getString(R.string.successfully_registered_part2));
+        Timer timer =new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                startActivity(new Intent(Signup_Activity.this , Login_Activity.class));
+                Animatoo.animateSplit(Signup_Activity.this);
+                finish();
+            }
+        } ,3000);
+        successful_registered_builder.create().show();
+    }
 
     private boolean checkEnterData() {
         name = edit_name.getText().toString().trim();
@@ -160,6 +187,7 @@ public class Signup_Activity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onBackPressed() {
         startActivity(new Intent(Signup_Activity.this , Login_Activity.class));
+        Animatoo.animateSplit(this);
         finish();
     } // end onBackPressed()
 } // end class

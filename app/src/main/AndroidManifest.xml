@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".user.Vacation_Departure_Request_Activity"></activity>
+        <activity android:name=".user.Departure_Details_Activity"></activity>
+        <activity android:name=".user.Vacation_Details_Activity" />
+        <activity android:name=".user.Details_Activity" />
+        <activity android:name=".user.Vacation_Departure_Request_Activity" />
         <activity android:name=".user.Settings_Activity" />
         <activity
             android:name=".Main_Activity"

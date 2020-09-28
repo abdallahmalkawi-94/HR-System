@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/phone"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/Signup_Dialog_Phone"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/phone"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:textSize="15sp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/textdark"
+        android:inputType="phone"
+        android:background="@drawable/edit_text_style"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/joining_date"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/Signup_Dialog_Joining_Date"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/joining_date"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:textSize="15sp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/textdark"
+        android:inputType="datetime"
+        android:background="@drawable/edit_text_style"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/designation"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+    <Spinner
+        android:id="@+id/Signup_Dialog_Designation_Spin"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:textSize="15sp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/textdark"
+        android:background="@drawable/edit_text_style"/>
+
+
+</LinearLayout>

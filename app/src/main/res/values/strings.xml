@@ -30,7 +30,8 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="designation">Designation</string>
     <string name="password_not_matched">Password Not Matched</string>
-    <string name="successfully_registered">Successful Registered</string>
+    <string name="successfully_registered_part1">Successful Registered</string>
+    <string name="successfully_registered_part2">\n Please wait you will automaticly go to Login page ...</string>
     <string name="joining_date">Joining Date</string>
     <string-array name="position_array">
         <item>Engineer</item>
@@ -43,7 +44,7 @@
     <string name="logout">Logout</string>
 
     <!-- User Main Strings -->
-    <string name="vacations_leaves_details">Vacations &amp; Leaves Details</string>
+    <string name="vacations_departure_details">Vacations &amp; Departure Details</string>
     <string name="vacation_departure_request">Vacation &amp; Departure Request</string>
     <string name="salary_slip">Salary Slip</string>
 
@@ -65,8 +66,22 @@
     <string name="choose_time_to">To</string>
     <string name="departure_date">Departure Date:-</string>
     <string name="submit">Submit</string>
-    <string name="under_review">Your Request Under Review</string>
-    <string-array name="request_type_string">
+    <string name="under_review">Under Review</string>
+    <string name="not_choose_request_message">Please Choose A Request!</string>
+    <string name="update_vacation_message">You submitted this date before, if you want change the date please choose new date Or press delete to delete the vacation ...</string>
+    <string name="update_departure_message">You submitted at this date before, if you want change the date/time please choose new date/time Or press delete to delete the departure ...</string>
+    <string name="delete">Delete</string>
+    <string name="successfully_update_date">Date has been modified</string>
+    <string name="save">Save</string>
+    <string name="delete_vacation">Vacation has been deleted</string>
+    <string name="delete_departure">Departure has been deleted</string>
+    <string name="submit_vacation_before">You submitted this date before</string>
+    <string name="vacation_details">Vacation Details</string>
+    <string name="departure_details">Departure Details</string>
+    <string name="submit_date">Submit Date</string>
+    <string name="status">Status:-</string>
+    <string name="update">Update</string>
+    <string-array name="request_type_spin">
         <item>Choose Type</item>
         <item>Vacation</item>
         <item>Departure</item>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/edit_text_style"
+    android:padding="20dp"
+    android:layout_margin="10dp">
+
+    <TextView
+        android:id="@+id/V_D_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/V_D_SDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/V_D_Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status"
+            android:textSize="15sp"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/V_D_Status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/adamina"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark" />
+    </LinearLayout>
+
+</LinearLayout>

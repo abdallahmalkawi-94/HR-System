@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.demo.employeemanagementsystemdemo.user.User_Main_Activity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,11 +27,13 @@ public class Main_Activity extends AppCompatActivity {
                 if (firebaseAuth.getCurrentUser() != null)
                 {
                     startActivity(new Intent(Main_Activity.this , User_Main_Activity.class));
+                    Animatoo.animateSwipeLeft(Main_Activity.this);
                     finish();
                 } // end if()
                 else
                 {
                     startActivity(new Intent(Main_Activity.this , Login_Activity.class));
+                    Animatoo.animateSwipeLeft(Main_Activity.this);
                     finish();
                 } // end else
 
